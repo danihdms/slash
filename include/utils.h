@@ -9,4 +9,6 @@
  */
 char** split(char* str, char delim);
 
+int find(char** array, char* str);
+
 #endif //UTILS_H

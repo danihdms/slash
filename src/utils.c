@@ -53,3 +53,18 @@ char** split(char* str, char delim) {
 	}
 	return res;
 }
+
+/**
+ * Check if an array of strings contains a string.
+ * @param array The array of strings.
+ * @param str The string to find.
+ * @return -1 if the string is not found, the index of the string otherwise.
+ */
+int find(char** array, char* str) {
+	if(array == NULL || str == NULL)
+		return -1;
+	for(int i = 0; array[i] != NULL; ++i)
+		if(strcmp(array[i], str) == 0)
+			return i;
+	return -1;
+}
