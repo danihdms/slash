@@ -68,8 +68,3 @@ int find(char** array, char* str) {
 			return i;
 	return -1;
 }
-
-void	exit_slash()
-{
-	exit(0);
-}
