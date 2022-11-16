@@ -11,6 +11,4 @@ char** split(char* str, char delim);
 
 int find(char** array, char* str);
 
-void	exit_slash();
-
 #endif //UTILS_H

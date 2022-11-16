@@ -19,7 +19,7 @@ int main() {
 
 		if(args[0] != NULL) {
 			if(strcmp(args[0], "exit") == 0) {
-				exit_slash();
+				// TODO: Handle exit command
 			} else if(strcmp(args[0], "cd") == 0) {
 				// TODO: Handle cd command
 			} else if(strcmp(args[0], "pwd") == 0) {
