@@ -7,6 +7,7 @@
 int main() {
 	int status = 0;
 	char* line = NULL, ** args = NULL;
+	rl_outstream = stderr;
 
 	while((line = readline("$> "))) {
 		// {"name", "arg1", "arg2", ..., NULL}
