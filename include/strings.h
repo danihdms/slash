@@ -16,4 +16,6 @@ int find(char** array, char* str);
 char* concat__(const char* s, ...);
 #define concat(...) concat__(__VA_ARGS__, NULL)
 
+char* int_to_string(int i);
+
 #endif //UTILS_H

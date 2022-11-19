@@ -105,3 +105,16 @@ char* concat__(const char* s, ...) {
 	result[len] = '\0';
 	return result;
 }
+
+#define INT_MAX_LENGTH 12
+
+char* int_to_string(int i) {
+	char* res = calloc(INT_MAX_LENGTH + 1, sizeof(char));
+	if(res == NULL) return NULL;
+	for(int j = 0; j < INT_MAX_LENGTH; ++j) {
+		res[j] = (char) (i % 10 + '0');
+		i /= 10;
+		if(i == 0) break;
+	}
+	return res;
+}
