@@ -72,7 +72,7 @@ int find(char** array, char* str) {
 char* concat__(const char* s, ...) {
 	if(s == NULL) return NULL;
 	va_list args;
-	size_t len = 0;
+	size_t len = strlen(s);
 	char* tmp;
 
 	// Compute the length of the string
