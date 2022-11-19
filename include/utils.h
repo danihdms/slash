@@ -11,4 +11,7 @@ char** split(char* str, char delim);
 
 int find(char** array, char* str);
 
+char* concat__(const char* s, ...);
+#define concat(...) concat__(__VA_ARGS__, NULL)
+
 #endif //UTILS_H

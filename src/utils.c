@@ -1,6 +1,7 @@
 #include <stddef.h>
 #include <string.h>
 #include <malloc.h>
+#include <stdarg.h>
 #include "utils.h"
 
 static size_t split_count(char* str, char delim) {
@@ -67,4 +68,41 @@ int find(char** array, char* str) {
 		if(strcmp(array[i], str) == 0)
 			return i;
 	return -1;
+}
+
+char* concat__(const char* s, ...) {
+	if(s == NULL) return NULL;
+	va_list args;
+	size_t len = 0;
+	char* tmp;
+
+	// Compute the length of the string
+	va_start(args, s);
+	while((tmp = va_arg(args, char *)) != NULL)
+		len += strlen(tmp);
+	va_end(args);
+
+	// Allocate the string
+	char* result = calloc(len + 1, sizeof(char));
+	if(result == NULL) return NULL;
+
+	// Concatenate the strings
+	va_start(args, s);
+	if(memmove(result, s, strlen(s) + 1) == NULL) {
+		free(result);
+		return NULL;
+	}
+
+	size_t j = strlen(s), l;
+	while((tmp = va_arg(args, char *)) != NULL && result != NULL) {
+		l = strlen(tmp);
+		if(memmove(result + j, tmp, l + 1) == NULL) {
+			free(result);
+			return NULL;
+		}
+		j += l;
+	}
+	va_end(args);
+	result[len] = '\0';
+	return result;
 }
