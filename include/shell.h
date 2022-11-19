@@ -1,6 +1,8 @@
 #ifndef SHELL_H
 #define SHELL_H
 
+#define RESET_COLOR "\001\033[00m\002"
+
 typedef enum {
 	GREEN,
 	RED,
@@ -15,5 +17,7 @@ typedef enum {
 char* to_fg_color(color c);
 
 char* to_bg_color(color c);
+
+char* reset_color();
 
 #endif //SHELL_H
