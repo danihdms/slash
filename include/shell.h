@@ -14,8 +14,8 @@ typedef enum {
 	PURPLE,
 } color;
 
-char* to_fg_color(color c);
-
-char* to_bg_color(color c);
+char    *to_fg_color(color c);
+char    *to_bg_color(color c);
+char    *ft_pwd(void);
 
 #endif //SHELL_H

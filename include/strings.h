@@ -1,7 +1,7 @@
 #ifndef UTILS_H
 #define UTILS_H
 
-#include <string.h>
+# include <string.h>
 
 /**
  * Split a string into an NULL-terminated array of strings.
@@ -9,7 +9,8 @@
  * @param delim The delimiter.
  * @return The array of strings (NULL-terminated).
  */
-char** split(char* str, char delim);
+char	**ft_split(char *str, char charset);
+char	**ft_bigfree(char **tab);
 
 int find(char** array, char* str);
 

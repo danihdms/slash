@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include "strings.h"
+#include "shell.h"
 
 int main() {
 	int status = 0;
@@ -11,7 +12,7 @@ int main() {
 
 	while((line = readline("$> "))) {
 		// {"name", "arg1", "arg2", ..., NULL}
-		args = split(line, ' ');
+		args = ft_split(line, ' ');
 		if(args == NULL) {
 			// TODO: Handle error
 			status = 1;
@@ -24,17 +25,17 @@ int main() {
 			} else if(strcmp(args[0], "cd") == 0) {
 				// TODO: Handle cd command
 			} else if(strcmp(args[0], "pwd") == 0) {
-				// TODO: Handle pwd command
+				ft_pwd();
 			} else {
 				// TODO: Handle other commands
 			}
 		}
 
 		free(line), line = NULL;
-		free(args), args = NULL;
+		args = ft_bigfree(args);
 	}
 
 	if(!line) free(line);
-	if(!args) free(args);
+	if(!args) ft_bigfree(args);
 	return status;
 }

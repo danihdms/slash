@@ -5,7 +5,7 @@ OPTIONS=-std=gnu17 -Iinclude -Wall -Wextra -Wconversion -Wunreachable-code -g
 LIBS=-lreadline
 COMPILE=$(COMPILER) $(OPTIONS) $(LIBS)
 
-SOURCE_FILES=$(wildcard src/*.c)
+SOURCE_FILES= src/ShellCommand/pwd.c src/ShellCommand/shell.c src/main.c src/Utils/ft_split.c src/Utils/strings.c
 OBJECT_FILES=$(patsubst src/%.c,build/%.o,$(SOURCE_FILES))
 
 slash: build/slash
