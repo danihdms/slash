@@ -2,7 +2,7 @@
 #include <readline/readline.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include "utils.h"
+#include "strings.h"
 
 int main() {
 	int status = 0;

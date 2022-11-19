@@ -1,6 +1,8 @@
 #ifndef UTILS_H
 #define UTILS_H
 
+#include <string.h>
+
 /**
  * Split a string into an NULL-terminated array of strings.
  * @param str The string to split.

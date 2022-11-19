@@ -1,8 +1,7 @@
 #include <stddef.h>
-#include <string.h>
 #include <malloc.h>
 #include <stdarg.h>
-#include "utils.h"
+#include "strings.h"
 
 static size_t split_count(char* str, char delim) {
 	size_t count = 0;
