@@ -41,3 +41,6 @@ all: build
 
 sync-with-lulu:
 	rsync -avz --delete --exclude '.git' --exclude 'build' . 'lulu:~/Slash'
+
+jalon-1:
+	./tests/jalon-1.sh
