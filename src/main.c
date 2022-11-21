@@ -23,7 +23,7 @@ int main() {
 			if(strcmp(args[0], "exit") == 0) {
 				// TODO: Handle exit command
 			} else if(strcmp(args[0], "cd") == 0) {
-				// TODO: Handle cd command
+				status = cd(args);
 			} else if(strcmp(args[0], "pwd") == 0) {
 				ft_pwd();
 			} else {
