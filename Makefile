@@ -5,7 +5,7 @@ OPTIONS=-std=gnu17 -Iinclude -Wall -Wextra -Wconversion -Wunreachable-code -g
 LIBS=-lreadline
 COMPILE=$(COMPILER) $(OPTIONS) $(LIBS)
 
-SOURCE_FILES= src/ShellCommand/pwd.c src/ShellCommand/shell.c src/main.c src/Utils/ft_split.c src/Utils/strings.c
+SOURCE_FILES= src/cd.c src/main.c src/pwd.c src/shell.c src/split.c src/strings.c
 OBJECT_FILES=$(patsubst src/%.c,build/%.o,$(SOURCE_FILES))
 
 slash: build/slash
@@ -22,10 +22,6 @@ clean:
 	@rm -rf build
 	@rm -f slash
 	@echo "Cleaned build files"
-
-build/%.o: src/%.c include/%.h
-	mkdir -p build
-	$(COMPILE) -c $< -o $@
 
 build/%.o: src/%.c
 	mkdir -p build

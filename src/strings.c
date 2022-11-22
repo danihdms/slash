@@ -1,7 +1,7 @@
 #include <stddef.h>
 #include <stdlib.h>
 #include <stdarg.h>
-#include "strings.h"
+#include "string.h"
 
 /**
  * Check if an array of strings contains a string.

@@ -1,6 +1,6 @@
 #include<stdlib.h>
 
-char	**ft_bigfree(char **tab)
+char	**bigfree(char **tab)
 {
 	int	i;
 
@@ -14,7 +14,7 @@ char	**ft_bigfree(char **tab)
 	return (NULL);
 }
 
-static int	ft_len_w(char *str, char charset)
+static int	len_w(char *str, char charset)
 {
 	int	i;
 
@@ -24,7 +24,7 @@ static int	ft_len_w(char *str, char charset)
 	return (i);
 }
 
-static int	ft_nbr_w(char *str, char charset)
+static int	nbr_w(char *str, char charset)
 {
 	int	count;
 	int	i;
@@ -34,7 +34,7 @@ static int	ft_nbr_w(char *str, char charset)
 	{
 		while (*str && *str == charset)
 			str++;
-		i = ft_len_w(str, charset);
+		i = len_w(str, charset);
 		str += i;
 		if (i)
 			count++;
@@ -42,7 +42,7 @@ static int	ft_nbr_w(char *str, char charset)
 	return (count);
 }
 
-static char	*ft_copy(char *src, int n)
+static char	*copy(char *src, int n)
 {
 	char	*res;
 
@@ -55,7 +55,7 @@ static char	*ft_copy(char *src, int n)
 	return (res);
 }
 
-char	**ft_split(char *str, char charset)
+char	**split(char *str, char charset)
 {
 	int		size;
 	int		i;
@@ -64,7 +64,7 @@ char	**ft_split(char *str, char charset)
 
 	if (!str)
 		return (NULL);
-	size = ft_nbr_w(str, charset);
+	size = nbr_w(str, charset);
 	tab = malloc(sizeof(char *) * (size + 1));
 	if (!tab)
 		return (NULL);
@@ -73,12 +73,12 @@ char	**ft_split(char *str, char charset)
 	{
 		while (*str && *str == charset)
 			str++;
-		n = ft_len_w(str, charset);
-		tab[i] = ft_copy(str, n);
+		n = len_w(str, charset);
+		tab[i] = copy(str, n);
 		if (!tab[i])
-			return (ft_bigfree(tab));
+			return (bigfree(tab));
 		str += n;
 	}
-	tab[size] = 0;
+	tab[size] = NULL;
 	return (tab);
 }

@@ -9,8 +9,8 @@
  * @param delim The delimiter.
  * @return The array of strings (NULL-terminated).
  */
-char	**ft_split(char *str, char charset);
-char	**ft_bigfree(char **tab);
+char	**split(char *str, char charset);
+char	**bigfree(char **tab);
 
 int find(char** array, char* str);
 

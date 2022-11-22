@@ -2,17 +2,18 @@
 #include <readline/readline.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include "strings.h"
+#include "string.h"
 #include "shell.h"
 
 int main() {
 	int status = 0;
-	char* line = NULL, ** args = NULL;
+	char*	line = NULL;
+	char	**args;
 	rl_outstream = stderr;
 
 	while((line = readline("$> "))) {
 		// {"name", "arg1", "arg2", ..., NULL}
-		args = ft_split(line, ' ');
+		args = split(line, ' ');
 		if(args == NULL) {
 			// TODO: Handle error
 			status = 1;
@@ -21,21 +22,24 @@ int main() {
 
 		if(args[0] != NULL) {
 			if(strcmp(args[0], "exit") == 0) {
-				// TODO: Handle exit command
+				if (args[1])
+					return (atoi(args[1]));
+				else
+					return (status);
 			} else if(strcmp(args[0], "cd") == 0) {
 				status = cd(args);
 			} else if(strcmp(args[0], "pwd") == 0) {
-				ft_pwd();
+				status = pwd();
 			} else {
 				// TODO: Handle other commands
 			}
 		}
 
 		free(line), line = NULL;
-		args = ft_bigfree(args);
+		args = bigfree(args);
 	}
 
 	if(!line) free(line);
-	if(!args) ft_bigfree(args);
+	if(!args) bigfree(args);
 	return status;
 }

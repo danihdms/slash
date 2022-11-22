@@ -1,7 +1,8 @@
 #include <unistd.h>
 #include <stdlib.h>
+#include "shell.h"
 
-size_t	strlen_double(char **arr)
+int	strlen_double(char **arr)
 {
     int	    i;
 
@@ -14,7 +15,7 @@ size_t	strlen_double(char **arr)
 int	cd(char **args)
 {
     int	    ret;
-    size_t  len;
+    int		len;
 
     len = strlen_double(args);
     switch (len)
@@ -37,9 +38,9 @@ int	cd(char **args)
     }
 }
 
-int	main(int argc, char *argv[])
-{
-    (void) argc;
-    cd(&argv[1]);
-    return (0);
-}
+// int	main(int argc, char *argv[])
+// {
+//     (void) argc;
+//     cd(&argv[1]);
+//     return (0);
+// }

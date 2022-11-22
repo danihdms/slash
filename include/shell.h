@@ -16,6 +16,7 @@ typedef enum {
 
 char    *to_fg_color(color c);
 char    *to_bg_color(color c);
-char    *ft_pwd(void);
+int    	pwd(void);
+int		cd(char **args);
 
 #endif //SHELL_H
