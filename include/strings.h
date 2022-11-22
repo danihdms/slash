@@ -23,4 +23,6 @@ char* substring(char* str, size_t start, size_t end);
 
 char *get_pwd_adds(char** array);
 
+char* truncate_string(char* str, size_t max, char* prefix);
+
 #endif //UTILS_H

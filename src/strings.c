@@ -27,7 +27,7 @@ char *get_pwd_adds(char** array) {
         i++;
     if (i > 0)
         return (array[i - 1]);
-    return (""); 
+    return ("");
 }
 
 char* concat__(const char* s, ...) {
@@ -86,5 +86,25 @@ char* substring(char* str, size_t start, size_t end) {
 	char* res = calloc(end - start, sizeof(char));
 	if(memmove(res, str + start, end - start))
 		free(res), res = NULL;
+	return res;
+}
+
+char* truncate_string(char* str, size_t max, char* prefix) {
+	if(!str) return NULL;
+
+	size_t str_len = strlen(str);
+	if(str_len < max) return strdup(str);
+
+	char* res = calloc(max + 1, sizeof(char));
+	if(!res) return NULL;
+
+	size_t prefix_len = strlen(prefix);
+	size_t len = max - prefix_len;
+	if(!memmove(res + prefix_len, str + str_len - max + prefix_len, len + 1) ||
+	   !memmove(res, prefix, prefix_len)) {
+		free(res);
+		return NULL;
+	}
+
 	return res;
 }
