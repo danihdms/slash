@@ -29,7 +29,7 @@ int main() {
 			} else if(strcmp(args[0], "cd") == 0) {
 				status = cd(args);
 			} else if(strcmp(args[0], "pwd") == 0) {
-				status = pwd();
+				status = pwd(get_pwd_adds(args + 1) );
 			} else {
 				// TODO: Handle other commands
 			}

@@ -17,6 +17,18 @@ int find(char** array, char* str) {
 			return i;
 	return -1;
 }
+char *get_pwd_adds(char** array) {
+    int i;
+    if (!array) {
+        return NULL;
+    }
+    i = 0;
+    while (strcmp(array[i], "-P") == 0 || strcmp(array[i], "-L") == 0)
+        i++;
+    if (i > 0)
+        return (array[i - 1]);
+    return (""); 
+}
 
 char* concat__(const char* s, ...) {
 	if(s == NULL) return NULL;

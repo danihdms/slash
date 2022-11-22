@@ -21,4 +21,6 @@ char* int_to_string(int i);
 
 char* substring(char* str, size_t start, size_t end);
 
+char *get_pwd_adds(char** array);
+
 #endif //UTILS_H
