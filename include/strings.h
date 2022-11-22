@@ -19,4 +19,6 @@ char* concat__(const char* s, ...);
 
 char* int_to_string(int i);
 
+char* substring(char* str, size_t start, size_t end);
+
 #endif //UTILS_H

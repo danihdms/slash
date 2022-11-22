@@ -67,3 +67,12 @@ char* int_to_string(int i) {
 	}
 	return res;
 }
+
+char* substring(char* str, size_t start, size_t end) {
+	if(str == NULL || start > end || end > strlen(str))
+		return NULL;
+	char* res = calloc(end - start, sizeof(char));
+	if(memmove(res, str + start, end - start))
+		free(res), res = NULL;
+	return res;
+}
