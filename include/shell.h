@@ -30,7 +30,7 @@ typedef enum {
 
 char    *to_fg_color(color c);
 char    *to_bg_color(color c);
-char* 	pwd(shell *sh, char *c);
-int		cd(char **args);
+int    	pwd(shell *sh, char *c);
+int		cd(char **args, char *pwd);
 
 #endif //SHELL_H
