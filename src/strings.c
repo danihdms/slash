@@ -23,7 +23,7 @@ char *get_pwd_adds(char** array) {
         return NULL;
     }
     i = 0;
-    while (strcmp(array[i], "-P") == 0 || strcmp(array[i], "-L") == 0)
+    while (array[i] && (strcmp(array[i], "-P") == 0 || strcmp(array[i], "-L") == 0))
         i++;
     if (i > 0)
         return (array[i - 1]);

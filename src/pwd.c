@@ -3,9 +3,9 @@
 #include <stdlib.h>
 #include "shell.h"
 
-int    pwd(char c) 
+int    pwd(char *c) 
 {
-    if (c == 'P')
+    if (strcmp(c, "-P"))
     {
         char    pwd[1024];
         if (getcwd(pwd, 1024) == NULL)
