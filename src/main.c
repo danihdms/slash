@@ -6,17 +6,17 @@
 #include "shell.h"
 
 int main() {
-	int status = 0;
+	shell* sh = new_shell();
 	char*	line = NULL;
 	char	**args;
 	rl_outstream = stderr;
 
-	while((line = readline("$> "))) {
+	while((line = readline(sh->prompt))) {
 		// {"name", "arg1", "arg2", ..., NULL}
 		args = split(line, ' ');
 		if(args == NULL) {
 			// TODO: Handle error
-			status = 1;
+			sh->status = 1;
 			break;
 		}
 
@@ -25,11 +25,11 @@ int main() {
 				if (args[1])
 					return (atoi(args[1]));
 				else
-					return (status);
+					return (sh->status);
 			} else if(strcmp(args[0], "cd") == 0) {
-				status = cd(args);
+				sh->status = cd(args);
 			} else if(strcmp(args[0], "pwd") == 0) {
-				status = pwd(get_pwd_adds(args + 1) );
+				sh->status = pwd(get_pwd_adds(args + 1) );
 			} else {
 				// TODO: Handle other commands
 			}
@@ -41,5 +41,5 @@ int main() {
 
 	if(!line) free(line);
 	if(!args) bigfree(args);
-	return status;
+	return sh->status;
 }
