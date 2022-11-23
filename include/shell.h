@@ -7,6 +7,8 @@ typedef struct {
     int status;      // exit status of last command
 } shell;
 
+shell* new_shell();
+
 #define RESET_COLOR "\001\033[00m\002"
 
 typedef enum {

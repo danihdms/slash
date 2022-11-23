@@ -1,4 +1,5 @@
 #include <stddef.h>
+#include <malloc.h>
 #include "shell.h"
 
 char* to_fg_color(color c) {
@@ -27,4 +28,10 @@ char* to_bg_color(color c) {
 		case WHITE: return "\001\033[0;47m\002";
 		default: return NULL;
 	}
+}
+
+shell* new_shell() {
+    shell* sh = malloc(sizeof(shell));
+    sh->status = 0;
+    sh->prompt = sh->owd = sh->cwd = "unknown";
 }
