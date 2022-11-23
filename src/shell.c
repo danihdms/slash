@@ -34,8 +34,9 @@ char* to_bg_color(color c) {
 shell* new_shell() {
     shell* sh = malloc(sizeof(shell));
     sh->status = 0;
-    sh->owd = sh->cwd = "unknown";
+    sh->owd = sh->cwd = strdup("unknown");
     shell_up_prompt(sh);
+    return sh;
 }
 
 void shell_up_prompt(shell *sh) {
@@ -43,10 +44,11 @@ void shell_up_prompt(shell *sh) {
     char *st = int_to_string(sh->status);
     char *cwd = truncate_string(sh->cwd, 30, "...");
     sh->prompt = concat(
-            to_fg_color(sh->status ? GREEN : RED),
+            to_fg_color(sh->status ? RED : GREEN),
             "[", st, "]",
+            RESET_COLOR,
             cwd,
-            "$"
+            "$ "
     );
     free(st), free(cwd);
 }
