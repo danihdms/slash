@@ -31,7 +31,7 @@ int main() {
 				status = cd(args);
 			} else if(strcmp(args[0], "pwd") == 0) {
 				status = pwd(get_pwd_adds(args + 1) );
-				write(STDERR_FILENO, cwd, strlen(cwd));
+				write(STDOUT_FILENO, cwd, strlen(cwd));
 			} else {
 				// TODO: Handle other commands
 			}

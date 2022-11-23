@@ -19,7 +19,10 @@ int cd_no_options(char **args)
                         return (ret);
                 }
                 else
+		{
+			getcwd(cwd, PATH_MAX);
                         return (ret);
+		}
         case 1:
                 if ((ret = chdir(args[0])) < 0)
                 {
@@ -27,7 +30,10 @@ int cd_no_options(char **args)
                         return (ret);
                 }
                 else
+		{
+			getcwd(cwd, PATH_MAX);
                         return (ret);
+		}
         default:
                 write(1, "You must type cd with 0 or 1 argument.\n", 39);
                 return (1);
