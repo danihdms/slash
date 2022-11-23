@@ -29,7 +29,9 @@ int main() {
 			} else if(strcmp(args[0], "cd") == 0) {
 				sh->status = cd(args);
 			} else if(strcmp(args[0], "pwd") == 0) {
-				sh->status = pwd(get_pwd_adds(args + 1) );
+				char* cwd = pwd(sh, get_pwd_adds(args + 1) );
+                write(STDERR_FILENO, cwd, strlen(cwd));
+                if(cwd) free(cwd);
 			} else {
 				// TODO: Handle other commands
 			}

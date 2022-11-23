@@ -34,7 +34,7 @@ char* to_bg_color(color c) {
 shell* new_shell() {
     shell* sh = malloc(sizeof(shell));
     sh->status = 0;
-    sh->owd = sh->cwd = strdup("unknown");
+    sh->owd = sh->cwd = pwd(sh, "-P");
     shell_up_prompt(sh);
     return sh;
 }

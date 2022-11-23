@@ -3,25 +3,28 @@
 #include <stdlib.h>
 #include "shell.h"
 
-int    pwd(char *c) 
+#define PATH_MAX 1024
+
+char*    pwd(shell *sh, char *c)
 {
     if (strcmp(c, "-P"))
     {
-        char    pwd[1024];
-        if (getcwd(pwd, 1024) == NULL)
-            return (1);
-        write(1, pwd, strlen(pwd));
-        return (0);
+        char    *pwd = calloc(PATH_MAX, sizeof(char));
+        if (getcwd(pwd, PATH_MAX) != NULL) {
+            shell_chstatus(sh, 0);
+            return pwd;
+        }
     }
     else
     {
         char *pwd;
         pwd = getenv( "PWD" );
-        if (!pwd)
-            return (1);
-        write(1, pwd, strlen(pwd));
-        return (0);
-
+        if (pwd) {
+            shell_chstatus(sh, 0);
+            return pwd;
+        }
     }
+    shell_chstatus(sh, 1);
+    return NULL;
 }
 
