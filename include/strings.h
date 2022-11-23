@@ -29,11 +29,11 @@ int     strlen_double(char **arr);
 
 char    *valid_command(char **args);
 
-char    *strtrim_back(char *str, char c);
+void    strtrim_back(char c);
 
-char    *strtrim_front(char *str, char c);
+void    strtrim_front(char c);
 
-char	*substr(char *str, unsigned int start, char c);
+void	substr(char *sub, char c);
 
 int     is_double_points(char *str);
 

@@ -1,6 +1,13 @@
 #ifndef SHELL_H
 #define SHELL_H
 
+#define PATH_MAX 1024
+
+char	owd[PATH_MAX];
+char	cwd[PATH_MAX];
+char	dest[PATH_MAX];
+int		status = 0;
+
 typedef struct {
     char* owd, *cwd; // old working directory, current working directory
     char* prompt;    // cached prompt (to avoid recalculating it every time)
@@ -30,7 +37,7 @@ typedef enum {
 
 char    *to_fg_color(color c);
 char    *to_bg_color(color c);
-int    	pwd(shell *sh, char *c);
-int		cd(char **args, char *pwd);
+char	*pwd(shell *sh, char *c);
+int		cd(char **args);
 
 #endif //SHELL_H

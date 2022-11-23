@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <stdarg.h>
 #include "string.h"
+#include "shell.h"
 
 /**
  * Check if an array of strings contains a string.
@@ -107,4 +108,94 @@ char* truncate_string(char* str, size_t max, char* prefix) {
 	}
 
 	return res;
+}
+
+// Gets length of a 2D array    
+int     strlen_double(char **arr)    
+{    
+        int         i;    
+
+        i = 0;    
+        if (!arr || !arr[i])    
+                return (0);    
+        while (arr[i])    
+                i++;    
+        return (i);    
+}    
+
+// Checks if command is in format "cd [-P | -L | null] [ref | -]"    
+char    *valid_command(char **args)    
+{    
+        int     i;    
+        char    *option;    
+
+        i = 0;    
+        option = "";    
+        if (!args)    
+                return (option);    
+        while (args[i] && (!strcmp(args[i], "-P") || !strcmp(args[i], "-L")))    
+        {    
+                if (!strcmp(args[i], "-P"))    
+                        option = "-P";    
+                else    
+                        option = "-L";    
+                i++;    
+        }    
+        if (args[i] && args[i][0] == '-')    
+        {    
+                if (args[i][1] || strlen_double(&args[i + 1]) != 0)    
+                        return (NULL);    
+        }    
+        if (args[i] && strlen_double(&args[i]) != 1)    
+                return (NULL);    
+        return (option);    
+}  
+
+void    strtrim_back(char c)
+{
+        int     i;
+
+        i = strlen(cwd) - 1;
+        while (cwd[i] && cwd[i] != c)
+                i--;
+        i--;
+        cwd[i] = 0;
+}
+
+void    strtrim_front(char c)
+{
+        int     i;
+        int     iter;
+
+        i = 0;
+        iter = 0;
+        while (dest[i] && dest[i] != c)
+                i++;
+        if (dest[i])
+                i++;
+        while (dest[i])
+                dest[iter++] = dest[i++];
+        dest[iter] = 0;
+}
+
+void    substr(char *sub, char c)
+{
+        size_t	len;
+
+        len = 0;
+        while (dest[len] && dest[len] != c)
+        {
+                sub[len] = dest[len];
+                len++;
+        }
+        if (dest[len])
+                sub[len] = dest[len];
+        sub[len] = 0;
+}
+
+int     is_double_points(char *str)
+{
+        if (!strncmp(str, "..", 2))
+                return (1);
+        return 0;
 }

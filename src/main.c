@@ -6,7 +6,7 @@
 #include "shell.h"
 
 int main() {
-	shell* sh = new_shell();
+	// shell* sh = new_shell();
 	char*	line = NULL;
 	char	**args;
 	rl_outstream = stderr;
@@ -16,7 +16,8 @@ int main() {
 		args = split(line, ' ');
 		if(args == NULL) {
 			// TODO: Handle error
-			sh->status = 1;
+			// sh->status = 1;
+			status = 1;
 			break;
 		}
 
@@ -25,9 +26,9 @@ int main() {
 				if (args[1])
 					return (atoi(args[1]));
 				else
-					return (sh->status);
+					return (status);
 			} else if(strcmp(args[0], "cd") == 0) {
-				sh->status = cd(args, sh->cwd);
+				status = cd(args);
 			} else if(strcmp(args[0], "pwd") == 0) {
 				char* cwd = pwd(sh, get_pwd_adds(args + 1) );
                 write(STDERR_FILENO, cwd, strlen(cwd));
