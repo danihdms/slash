@@ -50,3 +50,11 @@ void shell_up_prompt(shell *sh) {
     );
     free(st), free(cwd);
 }
+
+void shell_chcwd(shell* sh, char* cwd) {
+    if(!sh || !cwd) return;
+    free(sh->owd);
+    sh->owd = sh->cwd;
+    sh->cwd = strdup(cwd);
+    shell_up_prompt(sh);
+}
