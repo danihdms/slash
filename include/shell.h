@@ -1,6 +1,12 @@
 #ifndef SHELL_H
 #define SHELL_H
 
+typedef struct {
+    char* owd, *cwd; // old working directory, current working directory
+    char* prompt;    // cached prompt (to avoid recalculating it every time)
+    int status;      // exit status of last command
+} shell;
+
 #define RESET_COLOR "\001\033[00m\002"
 
 typedef enum {
