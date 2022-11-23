@@ -60,3 +60,11 @@ void shell_chcwd(shell* sh, char* cwd) {
     sh->cwd = strdup(cwd);
     shell_up_prompt(sh);
 }
+
+void shell_chstatus(shell* sh, int status) {
+    if(!sh) return;
+    if(sh->status != status) {
+        sh->status = status;
+        shell_up_prompt(sh);
+    }
+}

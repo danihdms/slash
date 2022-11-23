@@ -13,6 +13,8 @@ void shell_up_prompt(shell *sh);
 
 void shell_chcwd(shell* sh, char* cwd);
 
+void shell_chstatus(shell* sh, int status);
+
 #define RESET_COLOR "\001\033[00m\002"
 
 typedef enum {
