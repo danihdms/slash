@@ -6,21 +6,24 @@
 char	owd[PATH_MAX];
 char	cwd[PATH_MAX];
 char	dest[PATH_MAX];
+char	prompt[PATH_MAX];
 int		status = 0;
 
-typedef struct {
-    char* owd, *cwd; // old working directory, current working directory
-    char* prompt;    // cached prompt (to avoid recalculating it every time)
-    int status;      // exit status of last command
-} shell;
+/*
+   typedef struct {
+   char* owd, *cwd; // old working directory, current working directory
+   char* prompt;    // cached prompt (to avoid recalculating it every time)
+   int status;      // exit status of last command
+   } shell;
 
-shell* new_shell();
+   shell* new_shell();
 
-void shell_up_prompt(shell *sh);
+   void shell_up_prompt(shell *sh);
 
-void shell_chcwd(shell* sh, char* cwd);
+   void shell_chcwd(shell* sh, char* cwd);
 
-void shell_chstatus(shell* sh, int status);
+   void shell_chstatus(shell* sh, int status);
+ */
 
 #define RESET_COLOR "\001\033[00m\002"
 
@@ -37,7 +40,7 @@ typedef enum {
 
 char    *to_fg_color(color c);
 char    *to_bg_color(color c);
-char	*pwd(shell *sh, char *c);
+int	pwd(char *c);
 int		cd(char **args);
 
 #endif //SHELL_H

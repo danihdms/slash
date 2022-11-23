@@ -31,40 +31,69 @@ char* to_bg_color(color c) {
 	}
 }
 
-shell* new_shell() {
-    shell* sh = malloc(sizeof(shell));
-    sh->status = 0;
-    sh->owd = sh->cwd = pwd(sh, "-P");
-    shell_up_prompt(sh);
-    return sh;
+/*
+   shell* new_shell() {
+   shell* sh = malloc(sizeof(shell));
+   sh->status = 0;
+   sh->owd = sh->cwd = pwd(sh, "-P");
+   shell_up_prompt(sh);
+   return sh;
+   }
+ */
+
+/*
+   void shell_up_prompt(shell *sh) {
+   free(sh->prompt);
+   char *st = int_to_string(sh->status);
+   char *cwd = truncate_string(sh->cwd, 30, "...");
+   sh->prompt = concat(
+   to_fg_color(sh->status ? RED : GREEN),
+   "[", st, "]",
+   RESET_COLOR,
+   cwd,
+   "$ "
+   );
+   free(st), free(cwd);
+   }
+ */
+
+void shell_up_prompt() {
+	char *st = int_to_string(status);
+	char *cwd = truncate_string(cwd, 30, "...");
+	//    prompt = concat(
+	concat(
+			to_fg_color(status ? RED : GREEN),
+			"[", st, "]",
+			RESET_COLOR,
+			cwd,
+			"$ "
+	      );
+	free(st), free(cwd);
 }
 
-void shell_up_prompt(shell *sh) {
-    free(sh->prompt);
-    char *st = int_to_string(sh->status);
-    char *cwd = truncate_string(sh->cwd, 30, "...");
-    sh->prompt = concat(
-            to_fg_color(sh->status ? RED : GREEN),
-            "[", st, "]",
-            RESET_COLOR,
-            cwd,
-            "$ "
-    );
-    free(st), free(cwd);
-}
+/*
+   void shell_chcwd(shell* sh, char* cwd) {
+   if(!sh || !cwd) return;
+   free(sh->owd);
+   sh->owd = sh->cwd;
+   sh->cwd = strdup(cwd);
+   shell_up_prompt(sh);
+   }
+ */
 
-void shell_chcwd(shell* sh, char* cwd) {
-    if(!sh || !cwd) return;
-    free(sh->owd);
-    sh->owd = sh->cwd;
-    sh->cwd = strdup(cwd);
-    shell_up_prompt(sh);
-}
+/*
+   void shell_chstatus(shell* sh, int status) {
+   if(!sh) return;
+   if(sh->status != status) {
+   sh->status = status;
+   shell_up_prompt(sh);
+   }
+   }
 
-void shell_chstatus(shell* sh, int status) {
-    if(!sh) return;
-    if(sh->status != status) {
-        sh->status = status;
-        shell_up_prompt(sh);
-    }
-}
+   void shell_chstatus(int curr_status) {
+   if(curr_status != status) {
+   status = curr_status;
+   shell_up_prompt();
+   }
+   }
+ */

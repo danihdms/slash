@@ -11,7 +11,7 @@ int main() {
 	char	**args;
 	rl_outstream = stderr;
 
-	while((line = readline(sh->prompt))) {
+	while((line = readline(prompt))) {
 		// {"name", "arg1", "arg2", ..., NULL}
 		args = split(line, ' ');
 		if(args == NULL) {
@@ -30,9 +30,8 @@ int main() {
 			} else if(strcmp(args[0], "cd") == 0) {
 				status = cd(args);
 			} else if(strcmp(args[0], "pwd") == 0) {
-				char* cwd = pwd(sh, get_pwd_adds(args + 1) );
-                write(STDERR_FILENO, cwd, strlen(cwd));
-                if(cwd) free(cwd);
+				status = pwd(get_pwd_adds(args + 1) );
+				write(STDERR_FILENO, cwd, strlen(cwd));
 			} else {
 				// TODO: Handle other commands
 			}
@@ -44,5 +43,5 @@ int main() {
 
 	if(!line) free(line);
 	if(!args) bigfree(args);
-	return sh->status;
+	return (status);
 }
